@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>service</name>
+	<filePath>${moduleName}-service/src/main/java/${packageName}/${moduleName}/${subModuleName}/service/impl</filePath>
+	<fileName>${ClassName}ServiceImpl.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>service.impl;
+
+import com.houdask.site.common.service.impl.BaseServiceImpl;
+import com.houdask.site.common.redis.base.BaseRedisDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>dao.${ClassName}Dao;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>service.I${ClassName}Service;
+/**
+ * ${functionName}Service实现类
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+
+@Service
+public class ${ClassName}ServiceImpl  extends BaseServiceImpl<${ClassName}Dao,${ClassName}> implements I${ClassName}Service {
+	/*缓存操作
+	@Autowired
+	private BaseRedisDao baseRedisDao;
+	*/
+}]]>
+	</content>
+</template>

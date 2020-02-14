@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>controller</name>
+	<filePath>${moduleName}-api/src/main/java/${packageName}/${moduleName}/${subModuleName}</filePath>
+	<fileName>${ClassName}App.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}<#if subModuleName != "">.${subModuleName}</#if>;
+
+import com.houdask.site.common.annotation.HdSpringBootService;
+import org.springframework.boot.SpringApplication;
+
+@HdSpringBootService("${packageName}.${moduleName}<#if subModuleName != "">.${subModuleName}</#if>.dao")
+public class ${ClassName}App {
+    public static void main(String[] args) {
+        SpringApplication.run(${ClassName}App.class, args);
+    }
+}
+
+]]>
+	</content>
+</template>

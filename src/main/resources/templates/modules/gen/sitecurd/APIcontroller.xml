@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>controller</name>
+	<filePath>${moduleName}-api/src/main/java/${packageName}/${moduleName}/${subModuleName}/api</filePath>
+	<fileName>${ClassName}ApiController.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}<#if subModuleName != "">.${subModuleName}</#if>.api;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.houdask.site.common.result.JsonResult;
+import com.houdask.site.common.web.BaseJsonController;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>facade.I${ClassName}ServiceFacade;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+/**
+ * ${functionName}Controller
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+@Api(value  = "${functionName}信息操作类", description ="${functionName}相关操作接口定义类")
+@RestController
+@RequestMapping(value = "${r"${apiPath}"}/${urlPrefix}")
+public class ${ClassName}ApiController extends BaseJsonController {
+
+	//核心要设置check = true
+    @Reference(version = "1.0.0",check = false)
+	private I${ClassName}ServiceFacade ${className}Service;
+	
+
+    @ApiOperation("获取${functionName}信息列表")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="query",name="pageNum",dataType="String",required=true,value="页码",defaultValue="1"),
+            @ApiImplicitParam(paramType="query",name="pageSize",dataType="String",required=true,value="每页页数",defaultValue="15")
+    })
+    @ApiResponses({
+            @ApiResponse(response = ${ClassName}.class, responseContainer="List", code = 200, message = "请求成功"),
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有")
+    })
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public JsonResult findList(int pageNum, int pageSize , HttpServletRequest request) {
+        //当前用户信息
+        //Principal principal = (Principal) request.getAttribute(Principal.PRINCIPAL_REQUEST_KEY);
+        ${ClassName} ${className}  = new ${ClassName} ();
+        return   JsonResult.success(  ${className}Service.findList(${className} ,pageNum , pageSize ));
+    }
+
+
+    @ApiOperation("获取单条${functionName}信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="path",name="id",dataType="String",required=true,value="ID",defaultValue="1")
+     })
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有")
+    })
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    public JsonResult get(@PathVariable  String id , HttpServletRequest request) {
+       return    JsonResult.success(${className}Service.get(id));
+    }
+
+
+}]]>
+	</content>
+</template>

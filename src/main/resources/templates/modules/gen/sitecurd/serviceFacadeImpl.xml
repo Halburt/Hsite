@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>servicefacadeImpl</name>
+	<filePath>${moduleName}-service/src/main/java/${packageName}/${moduleName}/${subModuleName}/facadeImpl</filePath>
+	<fileName>${ClassName}ServiceFacadeImpl.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>facadeImpl;
+
+import com.alibaba.dubbo.config.annotation.Service;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+import com.houdask.site.common.facadeImpl.BaseServiceFacadeImpl;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>service.I${ClassName}Service;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>facade.I${ClassName}ServiceFacade;
+
+/**
+ * ${functionName}ServiceFacade 对外接口服务实现
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+//TODO   I${ClassName}ServiceFacade 请自行手动打开
+//@Service(version = "1.0.0")
+public class ${ClassName}ServiceFacadeImpl extends BaseServiceFacadeImpl<I${ClassName}Service,${ClassName}>  implements I${ClassName}ServiceFacade{
+
+}]]>
+	</content>
+</template>

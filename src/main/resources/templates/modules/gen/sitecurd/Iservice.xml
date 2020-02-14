@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>iservice</name>
+	<filePath>${moduleName}-facade/src/main/java/${packageName}/${moduleName}/${subModuleName}/service</filePath>
+	<fileName>I${ClassName}Service.java</fileName>
+	<content><![CDATA[
+
+package ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>service;
+
+import com.houdask.site.common.service.BaseService;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+
+import java.util.List;
+
+/**
+ * ${functionName}Service接口定义
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+public interface I${ClassName}Service extends BaseService< ${ClassName}> {
+
+
+}]]>
+	</content>
+</template>

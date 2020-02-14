@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>dao</name>
+	<filePath>${moduleName}-service/src/main/java/${packageName}/${moduleName}/${subModuleName}/dao</filePath>
+	<fileName>${ClassName}Dao.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>dao;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+import com.houdask.site.common.annotation.MyBatisDao;
+import com.houdask.site.common.dao.BaseDao;
+
+/**
+ * ${functionName}DAO接口
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+@MyBatisDao
+public interface ${ClassName}Dao extends BaseDao<${ClassName}> {
+}]]>
+	</content>
+</template>

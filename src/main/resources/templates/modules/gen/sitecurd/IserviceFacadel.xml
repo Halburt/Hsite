@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+	<name>ServiceFacade</name>
+	<filePath>${moduleName}-facade/src/main/java/${packageName}/${moduleName}/${subModuleName}/facade</filePath>
+	<fileName>I${ClassName}ServiceFacade.java</fileName>
+	<content><![CDATA[
+package ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>facade;
+
+import com.houdask.site.common.facade.IBaseServiceFacade;
+import ${packageName}.${moduleName}.<#if subModuleName != "">${subModuleName}.</#if>entity.${ClassName};
+/**
+ * ${functionName}ServiceFacade 对外接口服务定义
+ * @author ${functionAuthor}
+ * @version ${functionVersion}
+ */
+public interface    I${ClassName}ServiceFacade  extends IBaseServiceFacade< ${ClassName}>{
+
+
+}]]>
+	</content>
+</template>
